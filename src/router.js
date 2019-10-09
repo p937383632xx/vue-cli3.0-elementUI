@@ -1,24 +1,57 @@
 import Vue from "vue";
 import Router from "vue-router";
-import Home from "./views/Home.vue";
+
+import Login from './views/login/';
+import findAll from './components/findAll'
+import Home from '@/components/home.vue'
+import Host from './views/host'
+import Warn from './views/warn'
+import Hardware from './views/hardware'
+import Monitor from './views/monitor'
+import Usersystem from './views/usersystem'
+
 
 Vue.use(Router);
 
 export default new Router({
-  routes: [
+  routes:[
     {
-      path: "/",
-      name: "home",
-      component: Home
+      path: '/login',
+      name: 'login',// 路由名称
+      component: Login //组件对象
     },
     {
-      path: "/about",
-      name: "about",
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () =>
-        import(/* webpackChunkName: "about" */ "./views/About.vue")
+      path: '/',
+      name: 'home',
+      component:Home,
+      // 定义该路由下的子路由
+      children:[
+        {
+          path: '/host',
+          component: Host
+        },
+        {
+          path: '/warn',
+          component: Warn
+        },
+        {
+          path: '/hardware',
+          component: Hardware
+        },
+        {
+          path: '/monitor',
+          component: Monitor
+        },
+        {
+          path: '/usersystem',
+          component: Usersystem
+        }
+      ]
+    },
+    {
+      path: '/findAll',
+      name: 'findAll',
+      component:findAll
     }
   ]
-});
+})
