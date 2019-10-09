@@ -53,7 +53,7 @@
     </div>
 </template>
 <script>
-    import testApi from '@/api/test'
+    import testApi from 'src/api/test'
     export default {
         data() {
             return {
